@@ -16,5 +16,58 @@ At work we run gRPC microservices, and GQL mostly serves as a nice fanout layer 
 
 This repo is a mixture of me solving my narrow problem for work (and hopefully be extension graphqlgen), as well as demonstrating some of the power of the TypeScript compiler API. Utilizing the [Checker API](https://basarat.gitbooks.io/typescript/docs/compiler/checker.html) and a [custom transformer](https://github.com/Microsoft/TypeScript/pull/13940), I was able to solve my problem without too much hassle. 
 
+## Problem Visualized
+```ts
+// my_protos in node_modules
+export namespace protos {
+  export namespace user {
+    export interface User {
+      username: string;
+      info: UserInfo;
+    }
+    
+    export interface UserInfo {
+      firstName: string;
+      lastName: string;
+    }
+  }
+  
+  export namespace todo {
+    export interface Todo {
+      createdBy: protos.user.User;
+      text: string;
+    }
+  }
+}
+
+
+// src/models.ts <-- models for graphqlgen (models returned from Query resolvers)
+import { protos } from 'my_protos';
+
+export type User = protos.user.User;
+export type Todo = protos.todo.Todo;
+
+// Run my program here pointing at src/models file
+
+// generated/output.ts
+export interface User {
+  username: string;
+  info: {
+    firstName: string;
+    lastName: string;
+  }
+}
+
+export interface Todo {
+  createdBy: {
+    username: string;
+    info: {
+      firstName: string;
+      lastName: string;
+    }
+  },
+  text: string;
+}
+```
 
 
