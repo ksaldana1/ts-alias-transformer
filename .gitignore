@@ -1,0 +1,5 @@
+node_modules
+.vscode
+.npmrc
+generated
+output.ts
