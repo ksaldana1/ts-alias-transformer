@@ -1,12 +1,9 @@
 # ts-alias-transformer
-TypeScript AST transformer to resolve type aliases into fully formed interfaces. This is not a published package as of yet, so it's pretty painful for others to consume until then. I will publish this soon... at least I think. 
+TypeScript AST transformer to resolve type aliases into fully formed interfaces
 
 ## Usage
-* Clone repo 
-* yarn install
-* `npx ts-node src/index.ts ./path/to/you/model/definitions/models.ts`
-* outdir hard coded right now
-* your types should now be fully resolved interfaces
+* npm install -g ts-alias-transformer
+* run `ts-alias-transformer -m [path to model root] -o [generated output]
 
 
 ## Problem I'm trying to solve
