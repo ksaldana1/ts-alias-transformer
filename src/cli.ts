@@ -6,8 +6,8 @@ import { main } from './main';
 program
   .version('0.0.1')
   .description('resolve type aliases to their lowest structure')
-  .option('-m, --models [path]', 'the path to your models')
-  .option('-o, --outDir [path]', 'desired output directory');
+  .option('-m, --models [path]')
+  .option('-o, --outDir [path]');
 
 program.parse(process.argv);
 
