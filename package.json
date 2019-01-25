@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "main": "src/index.ts",
-  "scripts": {},
+  "scripts": {
+    "test": "jest"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ksaldana1/ts-alias-transformer.git"
@@ -21,7 +23,10 @@
     "typescript": "^3.2.4"
   },
   "devDependencies": {
+    "@types/jest": "^23.3.13",
     "@types/lodash": "^4.14.120",
-    "@types/node": "^10.12.18"
+    "@types/node": "^10.12.18",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.5"
   }
 }
