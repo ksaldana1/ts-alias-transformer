@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ts-alias-transformer At least works with my example 1`] = `
+"export interface User {
+    username: string;
+    info: {
+        firstName: string;
+        lastName: string;
+    };
+}
+export interface Todo {
+    createdBy: {
+        username: string;
+        info: {
+            firstName: string;
+            lastName: string;
+        };
+    };
+    text: string;
+}
+"
+`;
+
+exports[`ts-alias-transformer works with a relatively complicated node_module type import 1`] = `
+"export interface Heap {
+    total_heap_size: number;
+    total_heap_size_executable: number;
+    total_physical_size: number;
+    total_available_size: number;
+    used_heap_size: number;
+    heap_size_limit: number;
+    malloced_memory: number;
+    peak_malloced_memory: number;
+    does_zap_garbage: {
+        toString(radix?: number): string;
+        toFixed(fractionDigits?: number): string;
+        toExponential(fractionDigits?: number): string;
+        toPrecision(precision?: number): string;
+        valueOf(): number;
+        toLocaleString(locales?: string | string[], options?: {
+            localeMatcher?: string;
+            style?: string;
+            currency?: string;
+            currencyDisplay?: string;
+            useGrouping?: boolean;
+            minimumIntegerDigits?: number;
+            minimumFractionDigits?: number;
+            maximumFractionDigits?: number;
+            minimumSignificantDigits?: number;
+            maximumSignificantDigits?: number;
+        }): string;
+    };
+}
+"
+`;
