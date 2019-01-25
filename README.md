@@ -11,7 +11,7 @@ I am using GraphQL at work and would like to add some type-safety around resolve
 
 At work we run gRPC microservices, and GQL mostly serves as a nice fanout layer for our UI consumers. We already publish TypeScript interfaces that match our published proto contracts. I wanted to consume these types in graphqlgen, but ran into some issues due to [type export support](https://github.com/prisma/graphqlgen/issues/282) and with the way our TypeScript interfaces published (heavily namespaced, lots of references). Additionally, because graphqlgen is using babel-parser to do it's introspection and generation, it's quite limited as far as working with imported types (leads to parsing hell).
 
-This repo is a mixture of me solving my narrow problem for work (and hopefully be extension graphqlgen), as well as demonstrating some of the power of the TypeScript compiler API. Utilizing the [Checker API](https://basarat.gitbooks.io/typescript/docs/compiler/checker.html) and a [custom transformer](https://github.com/Microsoft/TypeScript/pull/13940), I was able to solve my problem without too much hassle. 
+This repo is a mixture of me solving my narrow problem for work (and hopefully by extension graphqlgen), as well as demonstrating some of the power of the TypeScript compiler API. Utilizing the [Checker API](https://basarat.gitbooks.io/typescript/docs/compiler/checker.html) and a [custom transformer](https://github.com/Microsoft/TypeScript/pull/13940), I was able to solve my problem without too much hassle. 
 
 ## Problem Visualized
 ```ts
