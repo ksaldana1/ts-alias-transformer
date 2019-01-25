@@ -2,8 +2,8 @@
 TypeScript AST transformer to resolve type aliases into fully formed interfaces
 
 ## Usage
-* npm install -g ts-alias-transformer
-* run `ts-alias-transformer -m [path to model root] -o [generated output]
+* `npm install -g ts-alias-transformer`
+* run `ts-alias-transformer -m [path to model root] -o [generated output]`
 
 
 ## Problem I'm trying to solve
