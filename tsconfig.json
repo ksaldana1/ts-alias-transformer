@@ -7,5 +7,6 @@
     "strict": false,
     "esModuleInterop": true,
     "moduleResolution": "node"
-  }
+  },
+  "include": ["src/**/*"]
 }
