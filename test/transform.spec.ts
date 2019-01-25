@@ -21,4 +21,13 @@ describe('ts-alias-transformer', () => {
     const result = ts.transform(source, [transformer(program)]);
     expect(printer.printFile(result.transformed[0])).toMatchSnapshot();
   });
+  it('works with type nesting', () => {
+    const filePath = path.resolve(__dirname, './models', 'basic_example_2.ts');
+    const program = ts.createProgram([filePath], {});
+    const source = program.getSourceFile(filePath);
+    const printer = ts.createPrinter();
+
+    const result = ts.transform(source, [transformer(program)]);
+    expect(printer.printFile(result.transformed[0])).toMatchSnapshot();
+  });
 });
