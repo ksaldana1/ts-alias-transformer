@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ts-alias-transformer At least works with my example 1`] = `
+exports[`ts-alias-transformer basic_example 1`] = `
 "export interface User {
     username: string;
     info: {
@@ -21,7 +21,30 @@ export interface Todo {
 "
 `;
 
-exports[`ts-alias-transformer works with a relatively complicated node_module type import 1`] = `
+exports[`ts-alias-transformer basic_example_2 1`] = `
+"export interface User {
+    user: {
+        username: string;
+        info: {
+            firstName: string;
+            lastName: string;
+        };
+    };
+    todo: {
+        createdBy: {
+            username: string;
+            info: {
+                firstName: string;
+                lastName: string;
+            };
+        };
+        text: string;
+    };
+}
+"
+`;
+
+exports[`ts-alias-transformer from_package 1`] = `
 "export interface Heap {
     total_heap_size: number;
     total_heap_size_executable: number;
@@ -49,29 +72,6 @@ exports[`ts-alias-transformer works with a relatively complicated node_module ty
             minimumSignificantDigits?: number;
             maximumSignificantDigits?: number;
         }): string;
-    };
-}
-"
-`;
-
-exports[`ts-alias-transformer works with type nesting 1`] = `
-"export interface User {
-    user: {
-        username: string;
-        info: {
-            firstName: string;
-            lastName: string;
-        };
-    };
-    todo: {
-        createdBy: {
-            username: string;
-            info: {
-                firstName: string;
-                lastName: string;
-            };
-        };
-        text: string;
     };
 }
 "

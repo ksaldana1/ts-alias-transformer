@@ -2,32 +2,21 @@ import ts from 'typescript';
 import path from 'path';
 import { transformer } from '../src/transformer';
 
+const filePaths = ['basic_example', 'basic_example_2', 'from_package'];
+
 describe('ts-alias-transformer', () => {
-  it('At least works with my example', () => {
-    const filePath = path.resolve(__dirname, './models', 'basic_example.ts');
-    const program = ts.createProgram([filePath], {});
-    const source = program.getSourceFile(filePath);
-    const printer = ts.createPrinter();
+  const program = ts.createProgram(
+    filePaths.map(f => path.resolve(__dirname, './models', `${f}.ts`)),
+    {}
+  );
+  const printer = ts.createPrinter();
 
-    const result = ts.transform(source, [transformer(program)]);
-    expect(printer.printFile(result.transformed[0])).toMatchSnapshot();
-  });
-  it('works with a relatively complicated node_module type import', () => {
-    const filePath = path.resolve(__dirname, './models', 'from_package.ts');
-    const program = ts.createProgram([filePath], {});
-    const source = program.getSourceFile(filePath);
-    const printer = ts.createPrinter();
-
-    const result = ts.transform(source, [transformer(program)]);
-    expect(printer.printFile(result.transformed[0])).toMatchSnapshot();
-  });
-  it('works with type nesting', () => {
-    const filePath = path.resolve(__dirname, './models', 'basic_example_2.ts');
-    const program = ts.createProgram([filePath], {});
-    const source = program.getSourceFile(filePath);
-    const printer = ts.createPrinter();
-
-    const result = ts.transform(source, [transformer(program)]);
-    expect(printer.printFile(result.transformed[0])).toMatchSnapshot();
+  filePaths.forEach(fp => {
+    it(`${fp}`, () => {
+      const filePath = path.resolve(__dirname, './models', `${fp}.ts`);
+      const source = program.getSourceFile(filePath);
+      const result = ts.transform(source, [transformer(program)]);
+      expect(printer.printFile(result.transformed[0])).toMatchSnapshot();
+    });
   });
 });
