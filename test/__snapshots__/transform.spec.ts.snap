@@ -53,3 +53,26 @@ exports[`ts-alias-transformer works with a relatively complicated node_module ty
 }
 "
 `;
+
+exports[`ts-alias-transformer works with type nesting 1`] = `
+"export interface User {
+    user: {
+        username: string;
+        info: {
+            firstName: string;
+            lastName: string;
+        };
+    };
+    todo: {
+        createdBy: {
+            username: string;
+            info: {
+                firstName: string;
+                lastName: string;
+            };
+        };
+        text: string;
+    };
+}
+"
+`;
