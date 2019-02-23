@@ -1,6 +1,8 @@
 # ts-alias-transformer
 TypeScript AST transformer to resolve type aliases into fully formed interfaces
 
+[Blog post](https://levelup.gitconnected.com/writing-a-custom-typescript-ast-transformer-731e2b0b66e6) with more context.
+
 ## Usage
 * `npm install -g ts-alias-transformer`
 * `ts-alias-transformer -m [path to model root] -o [generated output]`
